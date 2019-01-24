@@ -5,13 +5,13 @@ package com.vk.service;
  */
 public interface IModbusServiceRightWinderPLC110 {
 
-    public void writeDataToRegister0(final int value);
+    public void writeDataToRegister0(final float value);
     public void readDataFromRegister0();
-    public void writeDataToRegister1(final int value);
+    public void writeDataToRegister1(final float value);
     public void readDataFromRegister1();
-    public void writeDataToRegister2(final int value);
+    public void writeDataToRegister2(final float value);
     public void readDataFromRegister2();
-    public void writeDataToRegister3(final int value);
+    public void writeDataToRegister3(final float value);
     public void readDataFromRegister3();
     public void writeDataToRegister4(final int value);
     public void readDataFromRegister4();

@@ -1,6 +1,7 @@
 package com.vk.chain;
 
 import com.vk.entity.device.DeviceModelRightWindingPLC110;
+import com.vk.entity.json.JsonBodyFloat;
 import com.vk.entity.json.JsonBodyInt;
 import com.vk.entity.modbus.ModbusBodyQuery;
 import com.vk.service.IModbusServiceRightWinderPLC110;
@@ -41,16 +42,16 @@ public class Chain1 extends Thread{
     public void run() {
         while (!this.isInterrupted()){
             iModbusServiceRightWinderPLC110.readDataFromRegister0();
-            messageSendingOperations.convertAndSend("/topic/subscribe-winder-right-set-length", new JsonBodyInt(DeviceModelRightWindingPLC110.getDeviceValuesRegister0()));
+            messageSendingOperations.convertAndSend("/topic/subscribe-winder-right-set-length", new JsonBodyFloat(DeviceModelRightWindingPLC110.getDeviceValuesRegister0()));
 
             iModbusServiceRightWinderPLC110.readDataFromRegister1();
-            messageSendingOperations.convertAndSend("/topic/subscribe-winder-right-current-length", new JsonBodyInt(DeviceModelRightWindingPLC110.getDeviceValuesRegister1()));
+            messageSendingOperations.convertAndSend("/topic/subscribe-winder-right-current-length", new JsonBodyFloat(DeviceModelRightWindingPLC110.getDeviceValuesRegister1()));
 
             iModbusServiceRightWinderPLC110.readDataFromRegister2();
-            messageSendingOperations.convertAndSend("/topic/subscribe-winder-right-all-length", new JsonBodyInt(DeviceModelRightWindingPLC110.getDeviceValuesRegister2()));
+            messageSendingOperations.convertAndSend("/topic/subscribe-winder-right-all-length", new JsonBodyFloat(DeviceModelRightWindingPLC110.getDeviceValuesRegister2()));
 
             iModbusServiceRightWinderPLC110.readDataFromRegister3();
-            messageSendingOperations.convertAndSend("/topic/subscribe-winder-right-speed-read", new JsonBodyInt(DeviceModelRightWindingPLC110.getDeviceValuesRegister3()));
+            messageSendingOperations.convertAndSend("/topic/subscribe-winder-right-speed-read", new JsonBodyFloat(DeviceModelRightWindingPLC110.getDeviceValuesRegister3()));
 
             iModbusServiceRightWinderPLC110.readDataFromRegister4();
             messageSendingOperations.convertAndSend("/topic/subscribe-winder-right-bobbin", new JsonBodyInt(DeviceModelRightWindingPLC110.getDeviceValuesRegister4()));
@@ -71,12 +72,12 @@ public class Chain1 extends Thread{
             while (!modbusBodyQueryQueue.isEmpty()){
                 ModbusBodyQuery body = modbusBodyQueryQueue.poll();
                 switch (body.getQueryNumber()){
-                    case 0 : iModbusServiceRightWinderPLC110.writeDataToRegister0(body.getValue()); break;
-                    case 1 : iModbusServiceRightWinderPLC110.writeDataToRegister1(body.getValue()); break;
-                    case 2 : iModbusServiceRightWinderPLC110.writeDataToRegister2(body.getValue()); break;
-                    case 3 : iModbusServiceRightWinderPLC110.writeDataToRegister3(body.getValue()); break;
-                    case 4 : iModbusServiceRightWinderPLC110.writeDataToRegister4(body.getValue()); break;
-                    case 5 : iModbusServiceRightWinderPLC110.writeDataToRegister5(body.getValue()); break;
+                    case 0 : iModbusServiceRightWinderPLC110.writeDataToRegister0(body.getValueFloat()); break;
+                    case 1 : iModbusServiceRightWinderPLC110.writeDataToRegister1(body.getValueFloat()); break;
+                    case 2 : iModbusServiceRightWinderPLC110.writeDataToRegister2(body.getValueFloat()); break;
+                    case 3 : iModbusServiceRightWinderPLC110.writeDataToRegister3(body.getValueFloat()); break;
+                    case 4 : iModbusServiceRightWinderPLC110.writeDataToRegister4(body.getValueInt()); break;
+                    case 5 : iModbusServiceRightWinderPLC110.writeDataToRegister5(body.getValueInt()); break;
                     default: {
                         LOGGER.error("Wrong command in Chain1 --"+body.getQueryNumber());
                         System.out.println("Wrong command in Chain1 --"+body.getQueryNumber());

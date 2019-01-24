@@ -1,6 +1,7 @@
 package com.vk.controller.rest;
 
 import com.vk.controller.WebController;
+import com.vk.entity.json.JsonBodyFloat;
 import com.vk.entity.json.JsonBodyInt;
 import com.vk.entity.json.JsonBodyString;
 import com.vk.service.IModbusServiceRightWinderPLC110;
@@ -27,11 +28,13 @@ public class WinderController {
     }
 
     @MessageMapping(value = "/send-winder-right-set-length")
-    public void getSendWinderRightSetLength(final JsonBodyInt jsonBodyInt){
-        int val = jsonBodyInt.getValue();
+    public void getSendWinderRightSetLength(final JsonBodyFloat jsonBodyFloat){
+        float val = jsonBodyFloat.getValue();
 
-        if ( (val >= 0) && (val <= 2000) ){
+        if ( (val >= 0F) && (val <= 2000F) ){
+            System.out.println("current value"+val);
             iModbusServiceRightWinderPLC110.writeDataToRegister0(val);
+            System.out.println("current value end");
         } else{
             LOGGER.error("Set value out of bound length :"+val);
             System.out.println("Set value out of bound length :"+val);

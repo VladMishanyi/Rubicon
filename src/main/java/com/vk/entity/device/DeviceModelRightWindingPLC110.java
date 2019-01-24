@@ -13,10 +13,10 @@ public class DeviceModelRightWindingPLC110 {
 
     private static final int deviceRegisterRange0 = RegisterRange.HOLDING_REGISTER;
     private static final int deviceRegisterOffset0 = 0;
-    private static final int deviceRegisterDataType0 = DataType.TWO_BYTE_INT_UNSIGNED;
-    private static final int hysteresis0 = 1;
-    private static int deviceValuesRegister0 = 0;
-    private static int hisDeviceValuesRegisters0 = 0;
+    private static final int deviceRegisterDataType0 = DataType.FOUR_BYTE_FLOAT_SWAPPED;
+    private static final float hysteresis0 = 1.0F;
+    private static float deviceValuesRegister0 = 0;
+    private static float hisDeviceValuesRegisters0 = 0;
     private static final ModbusLocator modbusLocator0 =
             new ModbusLocator(deviceAddress,
                     deviceRegisterRange0,
@@ -24,11 +24,11 @@ public class DeviceModelRightWindingPLC110 {
                     deviceRegisterDataType0);
 
     private static final int deviceRegisterRange1 = RegisterRange.HOLDING_REGISTER;
-    private static final int deviceRegisterOffset1 = 1;
-    private static final int deviceRegisterDataType1 = DataType.TWO_BYTE_INT_UNSIGNED;
-    private static final int hysteresis1 = 1;
-    private static int deviceValuesRegister1 = 0;
-    private static int hisDeviceValuesRegisters1 = 0;
+    private static final int deviceRegisterOffset1 = 2;
+    private static final int deviceRegisterDataType1 = DataType.FOUR_BYTE_FLOAT_SWAPPED;
+    private static final float hysteresis1 = 1.0F;
+    private static float deviceValuesRegister1 = 0;
+    private static float hisDeviceValuesRegisters1 = 0;
     private static final ModbusLocator modbusLocator1 =
             new ModbusLocator(deviceAddress,
                     deviceRegisterRange1,
@@ -36,11 +36,11 @@ public class DeviceModelRightWindingPLC110 {
                     deviceRegisterDataType1);
 
     private static final int deviceRegisterRange2 = RegisterRange.HOLDING_REGISTER;
-    private static final int deviceRegisterOffset2 = 2;
-    private static final int deviceRegisterDataType2 = DataType.TWO_BYTE_INT_UNSIGNED;
-    private static final int hysteresis2 = 1;
-    private static int deviceValuesRegister2 = 0;
-    private static int hisDeviceValuesRegisters2 = 0;
+    private static final int deviceRegisterOffset2 = 4;
+    private static final int deviceRegisterDataType2 = DataType.FOUR_BYTE_FLOAT_SWAPPED;
+    private static final float hysteresis2 = 1.0F;
+    private static float deviceValuesRegister2 = 0;
+    private static float hisDeviceValuesRegisters2 = 0;
     private static final ModbusLocator modbusLocator2 =
             new ModbusLocator(deviceAddress,
                     deviceRegisterRange2,
@@ -48,11 +48,11 @@ public class DeviceModelRightWindingPLC110 {
                     deviceRegisterDataType2);
 
     private static final int deviceRegisterRange3 = RegisterRange.HOLDING_REGISTER;
-    private static final int deviceRegisterOffset3 = 3;
-    private static final int deviceRegisterDataType3 = DataType.TWO_BYTE_INT_UNSIGNED;
-    private static final int hysteresis3 = 1;
-    private static int deviceValuesRegister3 = 0;
-    private static int hisDeviceValuesRegisters3 = 0;
+    private static final int deviceRegisterOffset3 = 6;
+    private static final int deviceRegisterDataType3 = DataType.FOUR_BYTE_FLOAT_SWAPPED;
+    private static final float hysteresis3 = 1.0F;
+    private static float deviceValuesRegister3 = 0;
+    private static float hisDeviceValuesRegisters3 = 0;
     private static final ModbusLocator modbusLocator3 =
             new ModbusLocator(deviceAddress,
                     deviceRegisterRange3,
@@ -60,7 +60,7 @@ public class DeviceModelRightWindingPLC110 {
                     deviceRegisterDataType3);
 
     private static final int deviceRegisterRange4 = RegisterRange.HOLDING_REGISTER;
-    private static final int deviceRegisterOffset4 = 4;
+    private static final int deviceRegisterOffset4 = 8;
     private static final int deviceRegisterDataType4 = DataType.TWO_BYTE_INT_UNSIGNED;
     private static final int hysteresis4 = 1;
     private static int deviceValuesRegister4 = 0;
@@ -72,7 +72,7 @@ public class DeviceModelRightWindingPLC110 {
                     deviceRegisterDataType4);
 
     private static final int deviceRegisterRange5 = RegisterRange.HOLDING_REGISTER;
-    private static final int deviceRegisterOffset5 = 5;
+    private static final int deviceRegisterOffset5 = 9;
     private static final int deviceRegisterDataType5 = DataType.TWO_BYTE_INT_UNSIGNED;
     private static final int hysteresis5 = 1;
     private static int deviceValuesRegister5 = 0;
@@ -101,23 +101,23 @@ public class DeviceModelRightWindingPLC110 {
         return deviceRegisterDataType0;
     }
 
-    public static int getHysteresis0() {
+    public static float getHysteresis0() {
         return hysteresis0;
     }
 
-    public static int getDeviceValuesRegister0() {
+    public static float getDeviceValuesRegister0() {
         return deviceValuesRegister0;
     }
 
-    public static void setDeviceValuesRegister0(int deviceValuesRegister0) {
+    public static void setDeviceValuesRegister0(float deviceValuesRegister0) {
         DeviceModelRightWindingPLC110.deviceValuesRegister0 = deviceValuesRegister0;
     }
 
-    public static int getHisDeviceValuesRegisters0() {
+    public static float getHisDeviceValuesRegisters0() {
         return hisDeviceValuesRegisters0;
     }
 
-    public static void setHisDeviceValuesRegisters0(int hisDeviceValuesRegisters0) {
+    public static void setHisDeviceValuesRegisters0(float hisDeviceValuesRegisters0) {
         DeviceModelRightWindingPLC110.hisDeviceValuesRegisters0 = hisDeviceValuesRegisters0;
     }
 
@@ -137,23 +137,23 @@ public class DeviceModelRightWindingPLC110 {
         return deviceRegisterDataType1;
     }
 
-    public static int getHysteresis1() {
+    public static float getHysteresis1() {
         return hysteresis1;
     }
 
-    public static int getDeviceValuesRegister1() {
+    public static float getDeviceValuesRegister1() {
         return deviceValuesRegister1;
     }
 
-    public static void setDeviceValuesRegister1(int deviceValuesRegister1) {
+    public static void setDeviceValuesRegister1(float deviceValuesRegister1) {
         DeviceModelRightWindingPLC110.deviceValuesRegister1 = deviceValuesRegister1;
     }
 
-    public static int getHisDeviceValuesRegisters1() {
+    public static float getHisDeviceValuesRegisters1() {
         return hisDeviceValuesRegisters1;
     }
 
-    public static void setHisDeviceValuesRegisters1(int hisDeviceValuesRegisters1) {
+    public static void setHisDeviceValuesRegisters1(float hisDeviceValuesRegisters1) {
         DeviceModelRightWindingPLC110.hisDeviceValuesRegisters1 = hisDeviceValuesRegisters1;
     }
 
@@ -173,23 +173,23 @@ public class DeviceModelRightWindingPLC110 {
         return deviceRegisterDataType2;
     }
 
-    public static int getHysteresis2() {
+    public static float getHysteresis2() {
         return hysteresis2;
     }
 
-    public static int getDeviceValuesRegister2() {
+    public static float getDeviceValuesRegister2() {
         return deviceValuesRegister2;
     }
 
-    public static void setDeviceValuesRegister2(int deviceValuesRegister2) {
+    public static void setDeviceValuesRegister2(float deviceValuesRegister2) {
         DeviceModelRightWindingPLC110.deviceValuesRegister2 = deviceValuesRegister2;
     }
 
-    public static int getHisDeviceValuesRegisters2() {
+    public static float getHisDeviceValuesRegisters2() {
         return hisDeviceValuesRegisters2;
     }
 
-    public static void setHisDeviceValuesRegisters2(int hisDeviceValuesRegisters2) {
+    public static void setHisDeviceValuesRegisters2(float hisDeviceValuesRegisters2) {
         DeviceModelRightWindingPLC110.hisDeviceValuesRegisters2 = hisDeviceValuesRegisters2;
     }
 
@@ -209,23 +209,23 @@ public class DeviceModelRightWindingPLC110 {
         return deviceRegisterDataType3;
     }
 
-    public static int getHysteresis3() {
+    public static float getHysteresis3() {
         return hysteresis3;
     }
 
-    public static int getDeviceValuesRegister3() {
+    public static float getDeviceValuesRegister3() {
         return deviceValuesRegister3;
     }
 
-    public static void setDeviceValuesRegister3(int deviceValuesRegister3) {
+    public static void setDeviceValuesRegister3(float deviceValuesRegister3) {
         DeviceModelRightWindingPLC110.deviceValuesRegister3 = deviceValuesRegister3;
     }
 
-    public static int getHisDeviceValuesRegisters3() {
+    public static float getHisDeviceValuesRegisters3() {
         return hisDeviceValuesRegisters3;
     }
 
-    public static void setHisDeviceValuesRegisters3(int hisDeviceValuesRegisters3) {
+    public static void setHisDeviceValuesRegisters3(float hisDeviceValuesRegisters3) {
         DeviceModelRightWindingPLC110.hisDeviceValuesRegisters3 = hisDeviceValuesRegisters3;
     }
 

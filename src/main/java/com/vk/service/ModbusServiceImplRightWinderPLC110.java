@@ -21,7 +21,7 @@ public class ModbusServiceImplRightWinderPLC110 implements IModbusServiceRightWi
     }
 
     @Override
-    public void writeDataToRegister0(final int value){
+    public void writeDataToRegister0(final float value){
         iModbusRepositoryRightWinderPLC110.writeDataToRegister0(value);
     }
 
@@ -31,7 +31,7 @@ public class ModbusServiceImplRightWinderPLC110 implements IModbusServiceRightWi
     }
 
     @Override
-    public void writeDataToRegister1(final int value){
+    public void writeDataToRegister1(final float value){
         iModbusRepositoryRightWinderPLC110.writeDataToRegister1(value);
     }
 
@@ -41,7 +41,7 @@ public class ModbusServiceImplRightWinderPLC110 implements IModbusServiceRightWi
     }
 
     @Override
-    public void writeDataToRegister2(final int value){
+    public void writeDataToRegister2(final float value){
         iModbusRepositoryRightWinderPLC110.writeDataToRegister2(value);
     }
 
@@ -51,7 +51,7 @@ public class ModbusServiceImplRightWinderPLC110 implements IModbusServiceRightWi
     }
 
     @Override
-    public void writeDataToRegister3(final int value){
+    public void writeDataToRegister3(final float value){
         iModbusRepositoryRightWinderPLC110.writeDataToRegister3(value);
     }
 
