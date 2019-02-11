@@ -42,6 +42,36 @@ function connect() {
             document.getElementById("BobbinReadRValue").setAttribute('value', register4);
         });
 
+        stompClient.subscribe('/topic/subscribe-winder-left-set-length', function(result){
+            var parsed = JSON.parse(result.body);
+            var register0 = parsed.value;
+            document.getElementById("SetLengthLReadValue").setAttribute('value', register0);
+        });
+
+        stompClient.subscribe('/topic/subscribe-winder-left-current-length', function(result){
+            var parsed = JSON.parse(result.body);
+            var register1 = parsed.value;
+            document.getElementById("CurrentLengthLReadValue").setAttribute('value', register1);
+        });
+
+        stompClient.subscribe('/topic/subscribe-winder-left-all-length', function(result){
+            var parsed = JSON.parse(result.body);
+            var register2 = parsed.value;
+            document.getElementById("AllLengthLReadValue").setAttribute('value', register2);
+        });
+
+        stompClient.subscribe('/topic/subscribe-winder-left-speed-read', function(result){
+            var parsed = JSON.parse(result.body);
+            var register3 = parsed.value;
+            document.getElementById("SpeedReadLValue").setAttribute('value', register3);
+        });
+
+        stompClient.subscribe('/topic/subscribe-winder-left-bobbin', function(result){
+            var parsed = JSON.parse(result.body);
+            var register4 = parsed.value;
+            document.getElementById("BobbinReadLValue").setAttribute('value', register4);
+        });
+
     });
 }
 
@@ -50,6 +80,13 @@ document.getElementById("SetLengthRWriteValue").addEventListener("change", funct
 
     var data = JSON.stringify({'value' : leng});
     stompClient.send("/app/send-winder-right-set-length", {}, data);
+});
+
+document.getElementById("SetLengthLWriteValue").addEventListener("change", function sendChartBody() {
+    var leng = document.getElementById("SetLengthLWriteValue").value;
+
+    var data = JSON.stringify({'value' : leng});
+    stompClient.send("/app/send-winder-left-set-length", {}, data);
 });
 
 function disconnect() {

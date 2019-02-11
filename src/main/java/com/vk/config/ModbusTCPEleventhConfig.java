@@ -1,6 +1,5 @@
 package com.vk.config;
 
-import com.vk.entity.modbus.ModbusMasterSerialModel;
 import com.vk.entity.modbus.ModbusMasterTcpModel;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -13,23 +12,23 @@ import org.springframework.context.annotation.PropertySource;
  */
 @Configuration
 @ComponentScan(basePackages = {"com.vk.config"})
-@PropertySource("classpath:modbusTcpFirst.properties")
-public class ModbusTCPFirstConfig {
+@PropertySource("classpath:modbusTcpEleventh.properties")
+public class ModbusTCPEleventhConfig {
 
-    @Value("${modbusFirst.host}")
+    @Value("${modbusEleventh.host}")
     private String host;
 
-    @Value("${modbusFirst.port}")
+    @Value("${modbusEleventh.port}")
     private int port;
 
-    @Value("${modbusFirst.timeout}")
+    @Value("${modbusEleventh.timeout}")
     private int timeout;
 
-    @Value("${modbusFirst.retries}")
+    @Value("${modbusEleventh.retries}")
     private int retries;
 
-    @Bean(name = "modbusMasterTcpFirst")
-    public ModbusMasterTcpModel modbusMasterTcpFirst(){
+    @Bean(name = "modbusMasterTcpEleventh")
+    public ModbusMasterTcpModel modbusMasterTcpEleventh(){
         ModbusMasterTcpModel modbusMasterTcpModel = new ModbusMasterTcpModel(host, port, timeout, retries);
         return modbusMasterTcpModel;
     }

@@ -41,7 +41,8 @@ public class WebInitializer extends AbstractAnnotationConfigDispatcherServletIni
     @Override
     protected Class<?>[] getServletConfigClasses() {
         return new Class<?>[]{
-                ModbusTCPFirstConfig.class,
+                ModbusTCPTenthConfig.class,
+                ModbusTCPEleventhConfig.class,
                 RootConfig.class,
                 SecurityConfig.class,
                 SecurityInitializer.class,
