@@ -1,6 +1,7 @@
 package com.vk.repository.modbus;
 
 import com.serotonin.modbus4j.BatchRead;
+import com.serotonin.modbus4j.ModbusMaster;
 import com.vk.entity.device.DeviceModelLeftWindingPLC110;
 import com.vk.entity.modbus.ModbusMasterTcpModel;
 import com.vk.modbus.ModbusFloat;
@@ -26,6 +27,8 @@ public class ModbusRepositoryImplLeftWinderPLC110 implements IModbusRepositoryLe
 
     private final ModbusFloat modbusFloat;
 
+    private final ModbusMaster modbusMasterTcp;
+
     @Autowired
     public ModbusRepositoryImplLeftWinderPLC110(ModbusMasterTcpModel modbusMasterTcpEleventh,
                                                 BatchRead batchRead,
@@ -35,11 +38,12 @@ public class ModbusRepositoryImplLeftWinderPLC110 implements IModbusRepositoryLe
         this.batchRead = batchRead;
         this.modbusInteger = modbusInteger;
         this.modbusFloat = modbusFloat;
+        this.modbusMasterTcp = modbusMasterTcpEleventh.getMaster();
     }
 
     @Override
     public void writeDataToRegister0(final float value){
-        modbusFloat.writeDataToModBus(modbusMasterTcpEleventh,
+        modbusFloat.writeDataToModBus(modbusMasterTcp,
                 DeviceModelLeftWindingPLC110.getDeviceAddress(),
                 value,
                 DeviceModelLeftWindingPLC110.getModbusLocator0());
@@ -48,7 +52,7 @@ public class ModbusRepositoryImplLeftWinderPLC110 implements IModbusRepositoryLe
 
     @Override
     public void readDataFromRegister0(final boolean enableBatch){
-        final List<Float> list =  modbusFloat.readDataFromModBus(modbusMasterTcpEleventh,
+        final List<Float> list =  modbusFloat.readDataFromModBus(modbusMasterTcp,
                 DeviceModelLeftWindingPLC110.getDeviceAddress(),
                 batchRead,
                 enableBatch,
@@ -58,7 +62,7 @@ public class ModbusRepositoryImplLeftWinderPLC110 implements IModbusRepositoryLe
 
     @Override
     public void writeDataToRegister1(final float value){
-        modbusFloat.writeDataToModBus(modbusMasterTcpEleventh,
+        modbusFloat.writeDataToModBus(modbusMasterTcp,
                 DeviceModelLeftWindingPLC110.getDeviceAddress(),
                 value,
                 DeviceModelLeftWindingPLC110.getModbusLocator1());
@@ -67,7 +71,7 @@ public class ModbusRepositoryImplLeftWinderPLC110 implements IModbusRepositoryLe
 
     @Override
     public void readDataFromRegister1(final boolean enableBatch){
-        final List<Float> list =  modbusFloat.readDataFromModBus(modbusMasterTcpEleventh,
+        final List<Float> list =  modbusFloat.readDataFromModBus(modbusMasterTcp,
                 DeviceModelLeftWindingPLC110.getDeviceAddress(),
                 batchRead,
                 enableBatch,
@@ -77,7 +81,7 @@ public class ModbusRepositoryImplLeftWinderPLC110 implements IModbusRepositoryLe
 
     @Override
     public void writeDataToRegister2(final float value){
-        modbusFloat.writeDataToModBus(modbusMasterTcpEleventh,
+        modbusFloat.writeDataToModBus(modbusMasterTcp,
                 DeviceModelLeftWindingPLC110.getDeviceAddress(),
                 value,
                 DeviceModelLeftWindingPLC110.getModbusLocator2());
@@ -86,7 +90,7 @@ public class ModbusRepositoryImplLeftWinderPLC110 implements IModbusRepositoryLe
 
     @Override
     public void readDataFromRegister2(final boolean enableBatch){
-        final List<Float> list =  modbusFloat.readDataFromModBus(modbusMasterTcpEleventh,
+        final List<Float> list =  modbusFloat.readDataFromModBus(modbusMasterTcp,
                 DeviceModelLeftWindingPLC110.getDeviceAddress(),
                 batchRead,
                 enableBatch,
@@ -96,7 +100,7 @@ public class ModbusRepositoryImplLeftWinderPLC110 implements IModbusRepositoryLe
 
     @Override
     public void writeDataToRegister3(final float value){
-        modbusFloat.writeDataToModBus(modbusMasterTcpEleventh,
+        modbusFloat.writeDataToModBus(modbusMasterTcp,
                 DeviceModelLeftWindingPLC110.getDeviceAddress(),
                 value,
                 DeviceModelLeftWindingPLC110.getModbusLocator3());
@@ -105,7 +109,7 @@ public class ModbusRepositoryImplLeftWinderPLC110 implements IModbusRepositoryLe
 
     @Override
     public void readDataFromRegister3(final boolean enableBatch){
-        final List<Float> list =  modbusFloat.readDataFromModBus(modbusMasterTcpEleventh,
+        final List<Float> list =  modbusFloat.readDataFromModBus(modbusMasterTcp,
                 DeviceModelLeftWindingPLC110.getDeviceAddress(),
                 batchRead,
                 enableBatch,
@@ -115,7 +119,7 @@ public class ModbusRepositoryImplLeftWinderPLC110 implements IModbusRepositoryLe
 
     @Override
     public void writeDataToRegister4(final int value){
-        modbusInteger.writeDataToModBus(modbusMasterTcpEleventh,
+        modbusInteger.writeDataToModBus(modbusMasterTcp,
                 DeviceModelLeftWindingPLC110.getDeviceAddress(),
                 value,
                 DeviceModelLeftWindingPLC110.getModbusLocator4());
@@ -124,7 +128,7 @@ public class ModbusRepositoryImplLeftWinderPLC110 implements IModbusRepositoryLe
 
     @Override
     public void readDataFromRegister4(final boolean enableBatch){
-        final List<Integer> list =  modbusInteger.readDataFromModBus(modbusMasterTcpEleventh,
+        final List<Integer> list =  modbusInteger.readDataFromModBus(modbusMasterTcp,
                 DeviceModelLeftWindingPLC110.getDeviceAddress(),
                 batchRead,
                 enableBatch,
@@ -134,7 +138,7 @@ public class ModbusRepositoryImplLeftWinderPLC110 implements IModbusRepositoryLe
 
     @Override
     public void writeDataToRegister5(final int value){
-        modbusInteger.writeDataToModBus(modbusMasterTcpEleventh,
+        modbusInteger.writeDataToModBus(modbusMasterTcp,
                 DeviceModelLeftWindingPLC110.getDeviceAddress(),
                 value,
                 DeviceModelLeftWindingPLC110.getModbusLocator5());
@@ -143,7 +147,7 @@ public class ModbusRepositoryImplLeftWinderPLC110 implements IModbusRepositoryLe
 
     @Override
     public void readDataFromRegister5(final boolean enableBatch){
-        final List<Integer> list =  modbusInteger.readDataFromModBus(modbusMasterTcpEleventh,
+        final List<Integer> list =  modbusInteger.readDataFromModBus(modbusMasterTcp,
                 DeviceModelLeftWindingPLC110.getDeviceAddress(),
                 batchRead,
                 enableBatch,

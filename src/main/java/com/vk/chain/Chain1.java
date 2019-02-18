@@ -119,13 +119,11 @@ public class Chain1 extends Thread{
             if (DeviceModelRightWindingPLC110.getDeviceValuesRegister5() != 0){
                 LOGGER.error("ALARM in right winder № --"+DeviceModelRightWindingPLC110.getDeviceValuesRegister5());
                 System.out.println("ALARM in right winder № --"+DeviceModelRightWindingPLC110.getDeviceValuesRegister5());
-
             }
 
             if (DeviceModelLeftWindingPLC110.getDeviceValuesRegister5() != 0){
                 LOGGER.error("ALARM in left winder № --"+DeviceModelLeftWindingPLC110.getDeviceValuesRegister5());
                 System.out.println("ALARM in left winder № --"+DeviceModelLeftWindingPLC110.getDeviceValuesRegister5());
-
             }
         }
     }

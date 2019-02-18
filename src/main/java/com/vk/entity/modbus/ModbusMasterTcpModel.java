@@ -2,11 +2,19 @@ package com.vk.entity.modbus;
 
 import com.serotonin.modbus4j.ModbusFactory;
 import com.serotonin.modbus4j.ModbusMaster;
+import com.serotonin.modbus4j.exception.ModbusInitException;
 import com.serotonin.modbus4j.ip.IpParameters;
+import com.vk.modbus.RootModbusImpl;
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.stereotype.Component;
 
 /**
  * Created by KIP-PC99 on 03.01.2019.
  */
+@Component
+@ComponentScan(basePackages = "com.vk.config")
 public class ModbusMasterTcpModel {
     private String host;
     private int port;
@@ -15,13 +23,19 @@ public class ModbusMasterTcpModel {
     private ModbusFactory modbusFactory;
     private IpParameters ipParameters;
     private ModbusMaster modbusMaster;
+    private Logger LOGGER = Logger.getLogger(ModbusMasterTcpModel.class);
 
-    public ModbusMasterTcpModel(){}
+    public ModbusMasterTcpModel(){
+        modbusFactory = new ModbusFactory();
+        ipParameters = new IpParameters();
+    }
 
     public ModbusMasterTcpModel(String host,
                                 int port,
                                 int timeout,
                                 int retries){
+        modbusFactory = new ModbusFactory();
+        ipParameters = new IpParameters();
         this.host = host;
         this.port = port;
         this.timeout = timeout;
@@ -29,15 +43,25 @@ public class ModbusMasterTcpModel {
     }
 
     public ModbusMaster getMaster(){
-        modbusFactory = new ModbusFactory();
-        ipParameters = new IpParameters();
         ipParameters.setHost(host);
         ipParameters.setPort(port);
 
         modbusMaster = modbusFactory.createTcpMaster(ipParameters, true);
         modbusMaster.setTimeout(timeout);
         modbusMaster.setRetries(retries);
+        try {
+            modbusMaster.init();
+        }
+        catch (ModbusInitException e){
+            String message = e.getMessage();
+            LOGGER.error("ModBus Init problem, slave address №"+ host+ "--"+message);
+            System.out.println("ModBus Init problem, slave address №"+ host+ "--"+message);
+        }
         return modbusMaster;
+    }
+
+    public void modbusMasterDestroy(){
+        if (modbusMaster != null) modbusMaster.destroy();
     }
 
     public String getHost() {

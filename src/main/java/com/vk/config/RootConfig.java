@@ -1,6 +1,8 @@
 package com.vk.config;
 
 import com.serotonin.modbus4j.BatchRead;
+import com.serotonin.modbus4j.ModbusFactory;
+import com.serotonin.modbus4j.ip.IpParameters;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -28,6 +30,18 @@ public class RootConfig {
     public BatchRead batchRead(){
         return new BatchRead();
     }
+
+//    @Bean
+//    @Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
+//    public ModbusFactory modbusFactory(){
+//        return new ModbusFactory();
+//    }
+
+//    @Bean
+//    @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+//    public IpParameters ipParameters(){
+//        return new IpParameters();
+//    }
 
     @Bean
     public SimpleDateFormat simpleDateFormat(){

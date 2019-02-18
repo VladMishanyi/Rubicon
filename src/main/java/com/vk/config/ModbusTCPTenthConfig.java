@@ -1,6 +1,7 @@
 package com.vk.config;
 
 import com.vk.entity.modbus.ModbusMasterTcpModel;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -27,9 +28,19 @@ public class ModbusTCPTenthConfig {
     @Value("${modbusTenth.retries}")
     private int retries;
 
+    private ModbusMasterTcpModel modbusMasterTcpModel;
+
+    @Autowired
+    public ModbusTCPTenthConfig(ModbusMasterTcpModel modbusMasterTcpModel){
+        this.modbusMasterTcpModel = modbusMasterTcpModel;
+    }
+
     @Bean(name = "modbusMasterTcpTenth")
     public ModbusMasterTcpModel modbusMasterTcpTenth(){
-        ModbusMasterTcpModel modbusMasterTcpModel = new ModbusMasterTcpModel(host, port, timeout, retries);
+        modbusMasterTcpModel.setHost(host);
+        modbusMasterTcpModel.setPort(port);
+        modbusMasterTcpModel.setTimeout(timeout);
+        modbusMasterTcpModel.setRetries(retries);
         return modbusMasterTcpModel;
     }
 }

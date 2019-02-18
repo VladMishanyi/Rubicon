@@ -3,6 +3,9 @@ package com.vk.entity.modbus;
 import com.serotonin.io.serial.SerialParameters;
 import com.serotonin.modbus4j.ModbusFactory;
 import com.serotonin.modbus4j.ModbusMaster;
+import com.serotonin.modbus4j.exception.ModbusInitException;
+import com.serotonin.modbus4j.ip.IpParameters;
+import org.apache.log4j.Logger;
 
 
 /**
@@ -16,11 +19,16 @@ public class ModbusMasterSerialModel {
     private int parity;
     private int timeout;
     private int retries;
-    private ModbusFactory factory;
-    private SerialParameters params;
-    private ModbusMaster master;
+    private SerialParameters serialParameters;
+    private ModbusFactory modbusFactory;
+    private IpParameters ipParameters;
+    private ModbusMaster modbusMaster;
+    private Logger LOGGER = Logger.getLogger(ModbusMasterSerialModel.class);
 
-    public ModbusMasterSerialModel(){}
+    public ModbusMasterSerialModel(){
+        modbusFactory = new ModbusFactory();
+        serialParameters = new SerialParameters();
+    }
 
     public ModbusMasterSerialModel(final String port,
                                    final int baduRate,
@@ -29,6 +37,8 @@ public class ModbusMasterSerialModel {
                                    final int parity,
                                    final int timeout,
                                    final int retries){
+        modbusFactory = new ModbusFactory();
+        serialParameters = new SerialParameters();
         this.port = port;
         this.baduRate = baduRate;
         this.dataBits = dataBits;
@@ -39,18 +49,28 @@ public class ModbusMasterSerialModel {
     }
 
     public ModbusMaster getMaster(){
-        factory = new ModbusFactory();
-        params = new SerialParameters();
-        params.setCommPortId(port);
-        params.setBaudRate(baduRate);
-        params.setDataBits(dataBits);
-        params.setStopBits(stopBits);
-        params.setParity(parity);
+        serialParameters.setCommPortId(port);
+        serialParameters.setBaudRate(baduRate);
+        serialParameters.setDataBits(dataBits);
+        serialParameters.setStopBits(stopBits);
+        serialParameters.setParity(parity);
 
-        master = factory.createRtuMaster(params);
-        master.setTimeout(timeout);
-        master.setRetries(retries);
-        return master;
+        modbusMaster =  modbusFactory.createRtuMaster(serialParameters);
+        modbusMaster.setTimeout(timeout);
+        modbusMaster.setRetries(retries);
+        try {
+            modbusMaster.init();
+        }
+        catch (ModbusInitException e){
+            String message = e.getMessage();
+            LOGGER.error("ModBus Init problem, slave address №"+ port+ "--"+message);
+            System.out.println("ModBus Init problem, slave address №"+ port+ "--"+message);
+        }
+        return modbusMaster;
+    }
+
+    public void modbusMasterDestroy(){
+        if (modbusMaster != null) modbusMaster.destroy();
     }
 
     public String getPort() {
