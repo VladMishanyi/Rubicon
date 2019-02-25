@@ -1,5 +1,6 @@
 package com.vk.config;
 
+import com.serotonin.io.serial.SerialParameters;
 import com.serotonin.modbus4j.BatchRead;
 import com.serotonin.modbus4j.ModbusFactory;
 import com.serotonin.modbus4j.ip.IpParameters;
@@ -25,31 +26,37 @@ public class RootConfig {
         return new CommonsMultipartResolver();
     }
 
-    @Bean
     @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+    @Bean
     public BatchRead batchRead(){
         return new BatchRead();
     }
 
-//    @Bean
-//    @Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
-//    public ModbusFactory modbusFactory(){
-//        return new ModbusFactory();
-//    }
+    @Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
+    @Bean
+    public ModbusFactory modbusFactory(){
+        return new ModbusFactory();
+    }
 
-//    @Bean
-//    @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-//    public IpParameters ipParameters(){
-//        return new IpParameters();
-//    }
+    @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+    @Bean
+    public IpParameters ipParameters(){
+        return new IpParameters();
+    }
+
+    @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+    @Bean
+    public SerialParameters serialParameters(){
+        return new SerialParameters();
+    }
 
     @Bean
     public SimpleDateFormat simpleDateFormat(){
         return new SimpleDateFormat("yyyy-MM-dd HH:mm");
     }
 
-    @Bean
     @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+    @Bean
     public Date getDate(){
         return new Date();
     }

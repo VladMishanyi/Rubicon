@@ -15,7 +15,7 @@ import org.springframework.web.servlet.view.JstlView;
  */
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = {"com.vk.controller", "com.vk.configuration"})
+@ComponentScan(basePackages = {"com.vk.controller", "com.vk.config"})
 public class WebConfig extends WebMvcConfigurerAdapter {
 
     private static final String CONTENT_TYPE = "text/html;charset=UTF-8";

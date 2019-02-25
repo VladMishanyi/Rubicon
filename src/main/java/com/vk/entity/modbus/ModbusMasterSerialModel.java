@@ -6,11 +6,18 @@ import com.serotonin.modbus4j.ModbusMaster;
 import com.serotonin.modbus4j.exception.ModbusInitException;
 import com.serotonin.modbus4j.ip.IpParameters;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 
 /**
  * Created by User on 2018-02-22.
  */
+@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+@Component
+@ComponentScan(basePackages = "com.vk.config")
 public class ModbusMasterSerialModel {
     private String port;
     private int baduRate;
@@ -21,7 +28,6 @@ public class ModbusMasterSerialModel {
     private int retries;
     private SerialParameters serialParameters;
     private ModbusFactory modbusFactory;
-    private IpParameters ipParameters;
     private ModbusMaster modbusMaster;
     private Logger LOGGER = Logger.getLogger(ModbusMasterSerialModel.class);
 
@@ -48,7 +54,7 @@ public class ModbusMasterSerialModel {
         this.retries = retries;
     }
 
-    public ModbusMaster getMaster(){
+    public ModbusMaster getMaster() throws ModbusInitException{
         serialParameters.setCommPortId(port);
         serialParameters.setBaudRate(baduRate);
         serialParameters.setDataBits(dataBits);
@@ -58,14 +64,9 @@ public class ModbusMasterSerialModel {
         modbusMaster =  modbusFactory.createRtuMaster(serialParameters);
         modbusMaster.setTimeout(timeout);
         modbusMaster.setRetries(retries);
-        try {
-            modbusMaster.init();
-        }
-        catch (ModbusInitException e){
-            String message = e.getMessage();
-            LOGGER.error("ModBus Init problem, slave address №"+ port+ "--"+message);
-            System.out.println("ModBus Init problem, slave address №"+ port+ "--"+message);
-        }
+
+        modbusMaster.init();
+
         return modbusMaster;
     }
 
