@@ -65,7 +65,7 @@ public class ModbusMasterSerialModel {
         modbusMaster.setTimeout(timeout);
         modbusMaster.setRetries(retries);
 
-        modbusMaster.init();
+//        modbusMaster.init();
 
         return modbusMaster;
     }

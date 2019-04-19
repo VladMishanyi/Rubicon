@@ -48,6 +48,7 @@ public class ModbusRepositoryImplLeftWinderPLC110 implements IModbusRepositoryLe
         if ( (modbusMasterTcp == null) || !(modbusMasterTcp.isInitialized()) ) {
             try {
                 modbusMasterTcp = modbusMasterTcpEleventh.getMaster();
+                modbusMasterTcp.init();
             }
             catch (Exception e){
                 String message = e.getMessage();

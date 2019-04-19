@@ -8,6 +8,7 @@ import com.serotonin.modbus4j.exception.ModbusInitException;
 import com.vk.entity.modbus.ModbusMasterSerialModel;
 import com.vk.entity.modbus.ModbusMasterTcpModel;
 import org.apache.log4j.Logger;
+import org.apache.maven.plugin.lifecycle.Execution;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,11 +46,17 @@ public abstract class RootModbusImpl<E extends Number> implements RootModbus<E> 
             }
 
         }catch (Exception e){
-            modbusMaster.destroy();
+            setValuesDefault(list, modbusLocator.length);
             String message = e.getMessage();
             LOGGER.error("ModBus Transport problem, slave address №"+ adr+ "--"+message);
             System.out.println("ModBus Transport problem, slave address №"+ adr+ "--"+message);
-            setValuesDefault(list, modbusLocator.length);
+            try {
+                modbusMaster.destroy();
+            }catch (Exception ex){
+                String mess = ex.getMessage();
+                LOGGER.error("ModBus Transport problem, slave address №"+ adr+ "--"+mess);
+                System.out.println("ModBus Transport problem, slave address №"+ adr+ "--"+mess);
+            }
         }
 
         //-----------------------------------------------------------------------------
@@ -70,10 +77,16 @@ public abstract class RootModbusImpl<E extends Number> implements RootModbus<E> 
         try {
             modbusMaster.setValue(modbusLocator, values);
         }catch (Exception e){
-            modbusMaster.destroy();
             String message = e.getMessage();
             LOGGER.error("ModBus Transport problem, slave address №"+ adr+ "--"+message);
             System.out.println("ModBus Transport problem, slave address №"+ adr+ "--"+message);
+            try {
+                modbusMaster.destroy();
+            }catch (Exception ex){
+                String mess = ex.getMessage();
+                LOGGER.error("ModBus Transport problem, slave address №"+ adr+ "--"+mess);
+                System.out.println("ModBus Transport problem, slave address №"+ adr+ "--"+mess);
+            }
         }
     }
 

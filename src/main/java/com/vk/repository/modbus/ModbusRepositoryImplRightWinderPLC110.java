@@ -51,6 +51,7 @@ public class ModbusRepositoryImplRightWinderPLC110 implements IModbusRepositoryR
         if ( (modbusMasterTcp == null) || !(modbusMasterTcp.isInitialized()) ) {
             try {
                 modbusMasterTcp = modbusMasterTcpTenth.getMaster();
+                modbusMasterTcp.init();
             }
             catch (Exception e){
                 String message = e.getMessage();

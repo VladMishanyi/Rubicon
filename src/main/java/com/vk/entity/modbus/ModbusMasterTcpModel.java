@@ -53,7 +53,7 @@ public class ModbusMasterTcpModel {
         modbusMaster.setTimeout(timeout);
         modbusMaster.setRetries(retries);
 
-        modbusMaster.init();
+//        modbusMaster.init();
 
         return modbusMaster;
     }
