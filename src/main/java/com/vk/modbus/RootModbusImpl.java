@@ -21,7 +21,14 @@ public abstract class RootModbusImpl<E extends Number> implements RootModbus<E> 
 
     private Logger LOGGER = Logger.getLogger(RootModbusImpl.class);
 
+    private boolean error = false;
+
     public RootModbusImpl(){}
+
+    @Override
+    public boolean hasError(){
+        return error;
+    }
 
     @Override
     public synchronized List<E> readDataFromModBus(ModbusMaster modbusMaster,
@@ -29,6 +36,7 @@ public abstract class RootModbusImpl<E extends Number> implements RootModbus<E> 
                                       final BatchRead batch,
                                       final boolean enableBatch,
                                       final ModbusLocator ... modbusLocator) {
+        error = false;
         List<E> list = new ArrayList<>();
         try {
             if (enableBatch){
@@ -46,6 +54,7 @@ public abstract class RootModbusImpl<E extends Number> implements RootModbus<E> 
             }
 
         }catch (Exception e){
+            error = true;
             setValuesDefault(list, modbusLocator.length);
             String message = e.getMessage();
             LOGGER.error("ModBus Transport problem, slave address №"+ adr+ "--"+message);
@@ -53,6 +62,7 @@ public abstract class RootModbusImpl<E extends Number> implements RootModbus<E> 
             try {
                 modbusMaster.destroy();
             }catch (Exception ex){
+                error = true;
                 String mess = ex.getMessage();
                 LOGGER.error("ModBus Transport problem, slave address №"+ adr+ "--"+mess);
                 System.out.println("ModBus Transport problem, slave address №"+ adr+ "--"+mess);
@@ -75,14 +85,17 @@ public abstract class RootModbusImpl<E extends Number> implements RootModbus<E> 
                                   final E values,
                                   final ModbusLocator modbusLocator) {
         try {
+            error = false;
             modbusMaster.setValue(modbusLocator, values);
         }catch (Exception e){
+            error = true;
             String message = e.getMessage();
             LOGGER.error("ModBus Transport problem, slave address №"+ adr+ "--"+message);
             System.out.println("ModBus Transport problem, slave address №"+ adr+ "--"+message);
             try {
                 modbusMaster.destroy();
             }catch (Exception ex){
+                error = true;
                 String mess = ex.getMessage();
                 LOGGER.error("ModBus Transport problem, slave address №"+ adr+ "--"+mess);
                 System.out.println("ModBus Transport problem, slave address №"+ adr+ "--"+mess);

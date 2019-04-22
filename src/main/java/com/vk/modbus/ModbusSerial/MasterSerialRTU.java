@@ -55,15 +55,15 @@ public class MasterSerialRTU {
     private static final ModbusLocator modbusLocator17 = new ModbusLocator(18, RegisterRange.HOLDING_REGISTER, 132, DataType.FOUR_BYTE_FLOAT);
 
     private static void checkInitMaster(){
-        if ( (modbusMasterSerial3 == null) || !(modbusMasterSerial3.isInitialized()) ) {
-            try {
+        try {
+            if ( (modbusMasterSerial3 == null) || !(modbusMasterSerial3.isInitialized()) ) {
                 modbusMasterSerial3 = modbusMasterSerialModel3.getMaster();
                 modbusMasterSerial3.init();
             }
-            catch (Exception e){
-                String message = e.getMessage();
-                System.out.println("ModBus Init problem, COM №"+ modbusMasterSerialModel3.getPort()+ "--"+message);
-            }
+        }
+        catch (Exception e){
+            String message = e.getMessage();
+            System.out.println("ModBus Init problem, COM №"+ modbusMasterSerialModel3.getPort()+ "--"+message);
         }
     }
 
@@ -73,9 +73,10 @@ public class MasterSerialRTU {
             checkInitMaster();
             BatchRead batchRead = new BatchRead();
             modbusFloat.readDataFromModBus(modbusMasterSerial3, 16 , batchRead, false, modbusLocator0);
+            if (modbusFloat.hasError()) modbusMasterSerial3 = null;
             System.out.println("Time elapsed: " + (System.currentTimeMillis() - startTime) + "ms");
             System.out.println("----------------------------------------------------------------------------------------");
-            Thread.sleep(300);
+            Thread.sleep(1000);
         }
 //
 //        new MasterSerialRTUThread1().start();

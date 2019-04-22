@@ -66,6 +66,7 @@ public class ModbusRepositoryImplLeftWinderPLC110 implements IModbusRepositoryLe
                     DeviceModelLeftWindingPLC110.getDeviceAddress(),
                     value,
                     DeviceModelLeftWindingPLC110.getModbusLocator0());
+            if (modbusFloat.hasError()) modbusMasterTcp = null;
             DeviceModelLeftWindingPLC110.setDeviceValuesRegister0(value);
         }
     }
@@ -79,6 +80,7 @@ public class ModbusRepositoryImplLeftWinderPLC110 implements IModbusRepositoryLe
                     batchRead,
                     enableBatch,
                     DeviceModelLeftWindingPLC110.getModbusLocator0());
+            if (modbusFloat.hasError()) modbusMasterTcp = null;
             DeviceModelLeftWindingPLC110.setDeviceValuesRegister0(list.get(0));
         }
     }
@@ -91,6 +93,7 @@ public class ModbusRepositoryImplLeftWinderPLC110 implements IModbusRepositoryLe
                     DeviceModelLeftWindingPLC110.getDeviceAddress(),
                     value,
                     DeviceModelLeftWindingPLC110.getModbusLocator1());
+            if (modbusFloat.hasError()) modbusMasterTcp = null;
             DeviceModelLeftWindingPLC110.setDeviceValuesRegister1(value);
         }
     }
@@ -104,6 +107,7 @@ public class ModbusRepositoryImplLeftWinderPLC110 implements IModbusRepositoryLe
                     batchRead,
                     enableBatch,
                     DeviceModelLeftWindingPLC110.getModbusLocator1());
+            if (modbusFloat.hasError()) modbusMasterTcp = null;
             DeviceModelLeftWindingPLC110.setDeviceValuesRegister1(list.get(0));
         }
     }
@@ -116,6 +120,7 @@ public class ModbusRepositoryImplLeftWinderPLC110 implements IModbusRepositoryLe
                     DeviceModelLeftWindingPLC110.getDeviceAddress(),
                     value,
                     DeviceModelLeftWindingPLC110.getModbusLocator2());
+            if (modbusFloat.hasError()) modbusMasterTcp = null;
             DeviceModelLeftWindingPLC110.setDeviceValuesRegister2(value);
         }
     }
@@ -129,6 +134,7 @@ public class ModbusRepositoryImplLeftWinderPLC110 implements IModbusRepositoryLe
                     batchRead,
                     enableBatch,
                     DeviceModelLeftWindingPLC110.getModbusLocator2());
+            if (modbusFloat.hasError()) modbusMasterTcp = null;
             DeviceModelLeftWindingPLC110.setDeviceValuesRegister2(list.get(0));
         }
     }
@@ -141,6 +147,7 @@ public class ModbusRepositoryImplLeftWinderPLC110 implements IModbusRepositoryLe
                     DeviceModelLeftWindingPLC110.getDeviceAddress(),
                     value,
                     DeviceModelLeftWindingPLC110.getModbusLocator3());
+            if (modbusFloat.hasError()) modbusMasterTcp = null;
             DeviceModelLeftWindingPLC110.setDeviceValuesRegister3(value);
         }
     }
@@ -154,6 +161,7 @@ public class ModbusRepositoryImplLeftWinderPLC110 implements IModbusRepositoryLe
                     batchRead,
                     enableBatch,
                     DeviceModelLeftWindingPLC110.getModbusLocator3());
+            if (modbusFloat.hasError()) modbusMasterTcp = null;
             DeviceModelLeftWindingPLC110.setDeviceValuesRegister3(list.get(0));
         }
     }
@@ -166,6 +174,7 @@ public class ModbusRepositoryImplLeftWinderPLC110 implements IModbusRepositoryLe
                     DeviceModelLeftWindingPLC110.getDeviceAddress(),
                     value,
                     DeviceModelLeftWindingPLC110.getModbusLocator4());
+            if (modbusInteger.hasError()) modbusMasterTcp = null;
             DeviceModelLeftWindingPLC110.setDeviceValuesRegister4(value);
         }
     }
@@ -179,6 +188,7 @@ public class ModbusRepositoryImplLeftWinderPLC110 implements IModbusRepositoryLe
                     batchRead,
                     enableBatch,
                     DeviceModelLeftWindingPLC110.getModbusLocator4());
+            if (modbusInteger.hasError()) modbusMasterTcp = null;
             DeviceModelLeftWindingPLC110.setDeviceValuesRegister4(list.get(0));
         }
     }
@@ -191,6 +201,7 @@ public class ModbusRepositoryImplLeftWinderPLC110 implements IModbusRepositoryLe
                     DeviceModelLeftWindingPLC110.getDeviceAddress(),
                     value,
                     DeviceModelLeftWindingPLC110.getModbusLocator5());
+            if (modbusInteger.hasError()) modbusMasterTcp = null;
             DeviceModelLeftWindingPLC110.setDeviceValuesRegister5(value);
         }
     }
@@ -204,6 +215,7 @@ public class ModbusRepositoryImplLeftWinderPLC110 implements IModbusRepositoryLe
                     batchRead,
                     enableBatch,
                     DeviceModelLeftWindingPLC110.getModbusLocator5());
+            if (modbusInteger.hasError()) modbusMasterTcp = null;
             DeviceModelLeftWindingPLC110.setDeviceValuesRegister5(list.get(0));
         }
     }

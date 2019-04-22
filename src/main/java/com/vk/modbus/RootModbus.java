@@ -13,6 +13,8 @@ import java.util.List;
  */
 public interface RootModbus<E extends Number> {
 
+    public boolean hasError();
+
     public List<E> readDataFromModBus(ModbusMaster modbusMaster,
                                       int adr, BatchRead batch,
                                       boolean enableBatch,
