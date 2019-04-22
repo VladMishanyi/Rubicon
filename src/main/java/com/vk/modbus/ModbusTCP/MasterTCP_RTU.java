@@ -94,19 +94,21 @@ public class MasterTCP_RTU {
                     modbusLocator19,
                     modbusLocator20,
                     modbusLocator21);
+            if (modbusFloat.hasError()) modbusMasterTcp10 = null;
             modbusInteger.readDataFromModBus(modbusMasterTcp10, 5 , batchRead, false,
                     modbusLocator22,
                     modbusLocator23);
-
+            if (modbusInteger.hasError()) modbusMasterTcp10 = null;
             modbusFloat.readDataFromModBus(modbusMasterTcp11, 5 , batchRead, false,
                     modbusLocator18,
                     modbusLocator19,
                     modbusLocator20,
                     modbusLocator21);
+            if (modbusFloat.hasError()) modbusMasterTcp11 = null;
             modbusInteger.readDataFromModBus(modbusMasterTcp11, 5 , batchRead, false,
                     modbusLocator22,
                     modbusLocator23);
-
+            if (modbusInteger.hasError()) modbusMasterTcp11 = null;
             System.out.println("Time elapsed: " + (System.currentTimeMillis() - startTime) + "ms");
             System.out.println("----------------------------------------------------------------------------------------");
             Thread.sleep(100);
